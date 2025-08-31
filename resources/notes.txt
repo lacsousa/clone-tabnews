@@ -1,0 +1,95 @@
+Alguns pontos sobre a parte de DNS
+
+  Estamos verificando os IPs e os tipos de retorno dos DNSs cadastrados na Vercel
+
+  Pra isso, vamos usar o comando <dig> 
+
+  dig smartinvestai.com.br A
+
+; <<>> DiG 9.10.6 <<>> smartinvestai.com.br A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 28978
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1220
+;; QUESTION SECTION:
+;smartinvestai.com.br.          IN      A
+
+;; ANSWER SECTION:
+smartinvestai.com.br.   1800    IN      A       216.198.79.1
+smartinvestai.com.br.   1800    IN      A       64.29.17.1
+
+;; Query time: 1028 msec
+;; SERVER: 2804:14d:1:0:181:213:132:2#53(2804:14d:1:0:181:213:132:2)
+;; WHEN: Mon Jul 21 16:28:55 -03 2025
+;; MSG SIZE  rcvd: 81
+
+
+
+ dig smartinvestai.com.br TXT
+
+; <<>> DiG 9.10.6 <<>> smartinvestai.com.br TXT
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 28058
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1220
+;; QUESTION SECTION:
+;smartinvestai.com.br.          IN      TXT
+
+;; ANSWER SECTION:
+smartinvestai.com.br.   60      IN      TXT     "Sou apaixonado pelos alunos do curso.dev"
+
+;; Query time: 76 msec
+;; SERVER: 2804:14d:1:0:181:213:132:2#53(2804:14d:1:0:181:213:132:2)
+;; WHEN: Mon Jul 21 16:33:28 -03 2025
+;; MSG SIZE  rcvd: 102
+
+
+dig smartinvestai.com.br TXT +trace
+
+; <<>> DiG 9.10.6 <<>> smartinvestai.com.br TXT +trace
+;; global options: +cmd
+.                       502897  IN      NS      i.root-servers.net.
+.                       502897  IN      NS      b.root-servers.net.
+.                       502897  IN      NS      k.root-servers.net.
+.                       502897  IN      NS      m.root-servers.net.
+.                       502897  IN      NS      a.root-servers.net.
+.                       502897  IN      NS      l.root-servers.net.
+.                       502897  IN      NS      d.root-servers.net.
+.                       502897  IN      NS      h.root-servers.net.
+.                       502897  IN      NS      g.root-servers.net.
+.                       502897  IN      NS      c.root-servers.net.
+.                       502897  IN      NS      j.root-servers.net.
+.                       502897  IN      NS      e.root-servers.net.
+.                       502897  IN      NS      f.root-servers.net.
+.                       508535  IN      RRSIG   NS 8 0 518400 20250803050000 20250721040000 46441 . Op01AXszOctitZULU8wxb8B3bVq7O8OSnLMNI3x0Bf9siqmEhl3Kv/0F RItA+he5cZl9ydzgMTuUuE/FLgF1gGVM8ZpqrhDoPTzy7QCxgVuCYEca bpD4vV/cNvIhGF94dQkPUrN9rgqTmxeSgNpDkiKqyt1h5kWRpbzqeQnr tcQ52jrxtRfSHjRI1O4neWOCu7jeYLXBk/hvh8LN4f+ZMmzyVLy1TiVk 9r2J4PS+axPunI+GIkoZdTOUf0/OpFwXlRHQNhOrXpmmEgTdTPVJ6p5M lBIvXcIXX32uViyCwbeoHjZ/2/T/A2exaa1YiQKwwXvB37/UPm/7/g08 8tpz9Q==
+;; Received 525 bytes from 2804:14d:1:0:181:213:132:2#53(2804:14d:1:0:181:213:132:2) in 20 ms
+
+br.                     172800  IN      NS      a.dns.br.
+br.                     172800  IN      NS      b.dns.br.
+br.                     172800  IN      NS      c.dns.br.
+br.                     172800  IN      NS      d.dns.br.
+br.                     172800  IN      NS      e.dns.br.
+br.                     172800  IN      NS      f.dns.br.
+br.                     86400   IN      DS      38298 13 2 9F2D4993F47B0F2751DE0007D70A2754EE532FE373761154D9EA7A8C B9D8EA18
+br.                     86400   IN      RRSIG   DS 8 1 86400 20250803170000 20250721160000 46441 . PP6ByJgAuQQBp9EBGtnhQ2yMrcTb7WZ/qUSoUMtG6kFh/LaTPXuezZge PdNjwbxtgbcIZgpIZL7jDeHySMupy3ERVrcQvvBDrTw6VKFe3TVcskxY uqzgvwxW1S8GA6zeUyIDqWEYKXQZLoAPQF2yTg1LFIStPxfKyXOkBWTR gkP5xoOYXkyun9NJc+LHx/PKhNtE59CGrBFGuwfmLudmPu6yKrwLKxKy r4bBgtnUG9AVrsVjDDry8UMhWJq5SeeCpxSeaRgNoFCdDQydIo8aeQSO /0AcOrrOcG34yWvAHCPtiWTbuPbAQNQb38xhkSIY+rty6qM6M5GdwfBp txJ1zQ==
+;; Received 748 bytes from 2001:500:9f::42#53(l.root-servers.net) in 86 ms
+
+smartinvestai.com.br.   3600    IN      NS      ns1.vercel-dns.com.
+smartinvestai.com.br.   3600    IN      NS      ns2.vercel-dns.com.
+5lhlprs7okm4dbreb97vk9hojdd5jcbb.com.br. 900 IN NSEC3 1 1 0 37A6BAB35909CDC7ECF9 5LHMUSHIK4EKS26P0R7IFH20CRH5LSKL  NS SOA RRSIG DNSKEY NSEC3PARAM
+5lhlprs7okm4dbreb97vk9hojdd5jcbb.com.br. 900 IN RRSIG NSEC3 13 3 900 20250804193513 20250721183513 32356 com.br. BaBECnENz/TwAHYhHfUoYQAV+OtSGkd2s1Gc+a3i0zfP5kdQsAkFVs44 T5gv6O6leM8geVGqZOPLsJ7Dav1R6A==
+g7452libvpvmgsdptlnhg2n1bqm0k53c.com.br. 900 IN NSEC3 1 1 0 37A6BAB35909CDC7ECF9 G7469UJSVAA0CCC16POSQGSGHGRCFE1C  NS DS RRSIG
+g7452libvpvmgsdptlnhg2n1bqm0k53c.com.br. 900 IN RRSIG NSEC3 13 3 900 20250731091010 20250717081010 32356 com.br. tb9B5+zoGq2EwK/gadFNcJqGi/5echvlsWbQ9aYzoASqgJmohQc0z3LI K/vS7bip1WIeXn061V3FMpmrJ2rcHw==
+;; Received 482 bytes from 2001:12f8:6::10#53(a.dns.br) in 92 ms
+
+smartinvestai.com.br.   60      IN      TXT     "Sou apaixonado pelos alunos do curso.dev"
+;; Received 102 bytes from 2620:4d:4000:6259:7:13:0:1#53(ns1.vercel-dns.com) in 71 ms
+
+lucianosousa in clone-tabnews on  main [?] 
+➜  
