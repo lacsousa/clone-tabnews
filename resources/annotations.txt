@@ -1,5 +1,16 @@
 Some installations 
 
- npm install --save-dev jest@29.6.2
+    - npm install --save-dev jest@29.6.2
 
- 
+    - We are using postgres in  Database 
+
+    - Trough Docker Compose ( compose.yaml )
+
+        ** Using detached
+        - docker compose up -d
+
+    - To use a Postgres client    ( pgsql )
+        
+        sudo apt update && sudo apt upgrade
+        sudo apt install postgresql-client
+
