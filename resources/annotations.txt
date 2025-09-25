@@ -14,3 +14,14 @@ Some installations
         sudo apt update && sudo apt upgrade
         sudo apt install postgresql-client
 
+        - Add ports in yaml 
+        - Restart the container
+            docker compose up -d --force-recreate
+
+        - To execute -> psql
+             psql --host=localhost --username=postgres --port=5432
+
+    We move compose.yaml, so now we need from other docker compose command
+
+        - docker compose -f infra/compose.yaml up -d 
+

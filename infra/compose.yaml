@@ -3,5 +3,7 @@ services:
     image: "postgres:16.10-alpine3.22"
     environment:
       POSTGRES_PASSWORD: "local_password"
+    ports:
+      - "5432:5432"
 
    
