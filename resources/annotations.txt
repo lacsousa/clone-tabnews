@@ -23,5 +23,10 @@ Some installations
 
     We move compose.yaml, so now we need from other docker compose command
 
-        - docker compose -f infra/compose.yaml up -d 
+        To start database -> docker compose -f infra/compose.yaml up -d 
 
+            You can open this service in another tab and after close this tab, 
+                because the service comes up detached
+
+    - Install pg ( Connect to the postgresql by nodejs - node-postgres.com)
+        npm install pg@8.16.3
